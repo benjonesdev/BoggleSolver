@@ -14,7 +14,7 @@ class DictionaryParser
 private:
     std::unordered_map<std::string, int> validWords;
 public:
-    bool parseTextFile(std::string); // parse text file
+    void parseTextFile(std::string); // parse text file
     std::unordered_map<std::string, int> getValidWords(); // returns valid words read from text file as a hash map
 };
 
