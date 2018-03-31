@@ -19,6 +19,8 @@ void DictionaryParser::parseTextFile(std::string textFile) {
         validWords[currentWord] = score;
     }
 
+    dictFile.close(); // close file
+
 }
 
 // Getter
