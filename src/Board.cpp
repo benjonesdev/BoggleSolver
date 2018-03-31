@@ -6,9 +6,10 @@
 #include <ctime>
 #include <cstdlib>
 #include "Board.hpp"
+#include "DictionaryParser.hpp"
 
 Board::Board() : MAX_ROWS(4), MAX_COLS(4) {
-	// seed srand
+	// seed srand, is the right place to do this?
 	srand(time(NULL));
 	// init board
 	for (int i = 0; i < MAX_ROWS; i++) {
@@ -24,6 +25,8 @@ Board::Board() : MAX_ROWS(4), MAX_COLS(4) {
 			visited[i].push_back(false);
 		}
 	}
+//TODO: read dictionary txt file into dictionary var
+// dictionary = DictionaryParser.GetValidWords()
 }
 
 Board::~Board() {
@@ -44,10 +47,10 @@ void Board::printBoard() {
 		}
 		std::cout << "\n\n";
 	}
-//TEMP
-	dfs(0,0, "");
+	std::cout << "Num Possible Strings to Check Against Dictionary: " << validWords.size() << "\n";
 }
 
+// Randomizes the characters on the board
 void Board::randomBoard() {
     std::vector<int> spot;
     for (int i = 0; i < MAX_ROWS * MAX_COLS; i++) {
@@ -60,6 +63,16 @@ void Board::randomBoard() {
         	board[j][k] = squareGen(spot[j+k], face);
     	}
     }
+}
+
+// Calls dfs on every starting square on the board
+// After returning, validWords should contain every valid word on the board
+void Board::solveBoard() {
+	for (int row = 0; row < MAX_ROWS; row++) {
+		for (int col = 0; col < MAX_COLS; col++) {
+			dfs(row, col, "");
+		}
+	}
 }
 
 //////////////////////
@@ -76,18 +89,8 @@ void Board::dfs(int row, int col, std::string str) {
 	// Mark the square as visited
 	visited[row][col] = true;
 	
-//NOTE: this prints strings of length 4 to show that the strings generated follow boggle rules
-	if (str.size() == 4) {
-		std::cout << str << "\n";
-		validWords.push_back(str);
-	}
-
-/* Here we check if str is a valid word, if so add to a vector of valid words for the board
- * We'll need to add that vector to the function signature
- * ex:
- * if (isInDictionary(str))
- *		validWordsVector.push(str)
- */ 
+// Check if valid
+	validWords.push_back(str);
 
 	// Recursively move to adjacent squares +/- 1 in both directions
 	for (int i = row - 1; i <= row + 1; i++) {

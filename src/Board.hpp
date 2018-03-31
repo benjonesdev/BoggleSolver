@@ -13,8 +13,9 @@ class Board {
 public:
 	Board();
 	~Board();
-	void randomBoard();
 	void printBoard();
+	void randomBoard();
+	void solveBoard();
 private:
 	// constants
 	const int MAX_ROWS;

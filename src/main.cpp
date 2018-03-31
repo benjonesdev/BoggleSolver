@@ -9,6 +9,7 @@ using std::string;
 int main() {
 	Board b;
 	b.randomBoard();
+	b.solveBoard();
 	b.printBoard();
 	return 0;
 }
