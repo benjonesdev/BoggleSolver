@@ -1,10 +1,15 @@
 #include <iostream>
-#include <cstdlib>
+#include <string>
+#include <vector>
+#include "Board.hpp"
 
 using std::cout;
+using std::string;
 
 int main() {
-	cout << "Hello World of Bogglers\n";
-
+	Board b;
+	b.randomBoard();
+	b.solveBoard();
+	b.printBoard();
 	return 0;
 }
