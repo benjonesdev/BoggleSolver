@@ -25,6 +25,8 @@ private:
 	std::vector<std::string> validWords;
 	std::unordered_map<std::string, int> dictionary;
 	// functions
+	void dfs(int row, int col, std::string str);
+	bool outOfBounds(int row, int col);
 	char squareGen(int die, int face);
 };
 
