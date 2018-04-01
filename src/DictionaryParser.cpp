@@ -4,6 +4,7 @@
 
 #include <string>
 #include <fstream>
+#include <iostream>
 #include "DictionaryParser.hpp"
 
 // Constructor
@@ -11,41 +12,38 @@ void DictionaryParser::parseTextFile(std::string textFile) {
     std::ifstream dictFile;
     std::string currentWord;
     dictFile.open(textFile);
-
-    while (dictFile >> currentWord) // iterate through text file
-    {
-        // basic score of length of word - 1
-       // int score = currentWord.length() - 1;
-        //validWords[currentWord] = score;
-        std::string newWords = getValidWords();
-        if(newWords == currentWord)
+    if (dictFile) { // make sure file opened
+        while (dictFile >> currentWord) // iterate through text file
         {
-            if(.length() < 2)
+
+            int score;
+            if(currentWord.length() < 2)
             {
-                points += 0;
+                score = 0;
             }
-            else if(newWords.length() <= 4)
+            else if(currentWord.length() <= 4)
             {
-                points += 1;
+                score = 1;
             }
-            else if(newWords.length() <= 5)
+            else if(currentWord.length() <= 5)
             {
-                points += 2;
+                score = 2;
             }
-            else if(newWords.length() <= 6)
+            else if(currentWord.length() <= 6)
             {
-                points += 3;
+                score = 3;
             }
-            else if(newWords.length() <= 7)
+            else if(currentWord.length() <= 7)
             {
-                points += 5;
+                score = 5;
             }
             else
             {
-                points += 11;
+                score = 11;
             }
+            std::cout << currentWord << std::endl;
+            validWords[currentWord] = score;
         }
-
     }
 
     dictFile.close(); // close file
