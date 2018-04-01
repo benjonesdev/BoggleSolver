@@ -2,6 +2,7 @@
  * Dictionary Reader Class Implementation File *
 *************************************************/
 
+#include <algorithm>
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -41,6 +42,7 @@ void DictionaryParser::parseTextFile(std::string textFile) {
             {
                 score = 11;
             }
+            std::transform(currentWord.begin(), currentWord.end(), currentWord.begin(), ::toupper);
             validWords[currentWord] = score;
         }
     }
