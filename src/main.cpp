@@ -13,7 +13,7 @@ int main() {
     d.parseTextFile("../dictionary.txt");
     std::unordered_map<string, int> validWords;
     validWords = d.getValidWords();
-    cout << validWords["cool"] << std::endl;
+    cout << validWords["APPLE"] << std::endl;
 	Board b;
 	b.randomBoard();
 	b.solveBoard();
