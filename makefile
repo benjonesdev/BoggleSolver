@@ -1,7 +1,7 @@
 all: Boggle
 
 Boggle: bin/main.o bin/Board.o bin/DictionaryParser.o
-	g++ -o bin/Boggle bin/main.o bin/Board.o
+	g++ -o bin/Boggle bin/main.o bin/Board.o bin/DictionaryParser.o
 
 bin/main.o: src/main.cpp
 	g++ -g -Wall -std=c++11 -c -Iinclude -o bin/main.o src/main.cpp
