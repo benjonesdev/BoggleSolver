@@ -10,10 +10,17 @@ using std::string;
 
 int main() {
     DictionaryParser d;
-    d.parseTextFile("../dictionary.txt");
+    string textFile = "dictionary.txt";
+    d.parseTextFile(textFile);
     std::unordered_map<string, int> validWords;
     validWords = d.getValidWords();
-    cout << validWords["APPLE"] << std::endl;
+
+    // // Iterate and print keys and values of unordered_map
+    // for (const auto &n : validWords)
+    // {
+    //     std::cout << "Key:[" << n.first << "] Value:[" << n.second << "]\n";
+    // }
+    
 	Board b;
 	b.randomBoard();
 	b.solveBoard();
