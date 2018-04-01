@@ -8,7 +8,7 @@
 #include "Board.hpp"
 #include "DictionaryParser.hpp"
 
-Board::Board() : MAX_ROWS(4), MAX_COLS(4) {
+Board::Board(std::unordered_map<std::string, int> dict) : MAX_ROWS(4), MAX_COLS(4) {
 	// seed srand, is the right place to do this?
 	srand(time(NULL));
 	// init board
@@ -25,6 +25,7 @@ Board::Board() : MAX_ROWS(4), MAX_COLS(4) {
 			visited[i].push_back(false);
 		}
 	}
+	dictionary = dict;
 //TODO: read dictionary txt file into dictionary var
 // dictionary = DictionaryParser.GetValidWords()
 }
@@ -38,6 +39,7 @@ Board::~Board() {
 //////////////////////
 
 void Board::printBoard() {
+	std::cout << "Board: \n";
 	for (int row = 0; row < MAX_ROWS; row++) {
 		for (int col = 0; col < MAX_COLS; col++) {
 			if (board[row][col] == 'Q')
@@ -47,7 +49,13 @@ void Board::printBoard() {
 		}
 		std::cout << "\n\n";
 	}
-	std::cout << "Num Possible Strings to Check Against Dictionary: " << validWords.size() << "\n";
+}
+
+void Board::printValidWords() {
+	std::cout << "Valid Words Found:\n";
+	for (auto it = validWords.begin(); it != validWords.end(); ++it) {
+		std::cout << "Word: " << it->first << " Points: " << it->second << "\n";
+	}
 }
 
 // Randomizes the characters on the board
@@ -90,7 +98,9 @@ void Board::dfs(int row, int col, std::string str) {
 	visited[row][col] = true;
 	
 // Check if valid
-	validWords.push_back(str);
+	if (dictionary.find(str) != dictionary.end() && dictionary[str] > 0)	{
+		validWords[str] = dictionary[str];
+	}
 
 	// Recursively move to adjacent squares +/- 1 in both directions
 	for (int i = row - 1; i <= row + 1; i++) {

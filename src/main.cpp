@@ -21,9 +21,10 @@ int main() {
     //     std::cout << "Key:[" << n.first << "] Value:[" << n.second << "]\n";
     // }
     
-	Board b;
+	Board b(validWords);
 	b.randomBoard();
 	b.solveBoard();
+	b.printValidWords();
 	b.printBoard();
 	return 0;
 }
