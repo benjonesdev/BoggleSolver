@@ -11,7 +11,7 @@
 
 class Board {
 public:
-	Board();
+	Board(std::unordered_map<std::string, int> dict);
 	~Board();
 	void printBoard();
 	void randomBoard();

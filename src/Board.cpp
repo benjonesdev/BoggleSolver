@@ -8,7 +8,7 @@
 #include "Board.hpp"
 #include "DictionaryParser.hpp"
 
-Board::Board() : MAX_ROWS(4), MAX_COLS(4) {
+Board::Board(std::unordered_map<std::string, int> dict) : MAX_ROWS(4), MAX_COLS(4) {
 	// seed srand, is the right place to do this?
 	srand(time(NULL));
 	// init board
@@ -25,6 +25,7 @@ Board::Board() : MAX_ROWS(4), MAX_COLS(4) {
 			visited[i].push_back(false);
 		}
 	}
+	dictionary = dict;
 //TODO: read dictionary txt file into dictionary var
 // dictionary = DictionaryParser.GetValidWords()
 }
