@@ -21,8 +21,8 @@ private:
 	const int MAX_ROWS;
 	const int MAX_COLS;
 	// variables
-	std::vector<std::vector<char>> board;
-	std::vector<std::vector<bool>> visited;
+	std::vector<std::vector<char> > board;
+	std::vector<std::vector<bool> > visited;
 	std::vector<std::string> validWords;
 	std::unordered_map<std::string, int> dictionary;
 	// functions
