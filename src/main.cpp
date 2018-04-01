@@ -24,6 +24,7 @@ int main() {
 	Board b(validWords);
 	b.randomBoard();
 	b.solveBoard();
+	b.printValidWords();
 	b.printBoard();
 	return 0;
 }

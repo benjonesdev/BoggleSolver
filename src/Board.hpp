@@ -14,6 +14,7 @@ public:
 	Board(std::unordered_map<std::string, int> dict);
 	~Board();
 	void printBoard();
+	void printValidWords();
 	void randomBoard();
 	void solveBoard();
 private:
@@ -23,7 +24,7 @@ private:
 	// variables
 	std::vector<std::vector<char> > board;
 	std::vector<std::vector<bool> > visited;
-	std::vector<std::string> validWords;
+	std::unordered_map<std::string, int> validWords;
 	std::unordered_map<std::string, int> dictionary;
 	// functions
 	void dfs(int row, int col, std::string str);

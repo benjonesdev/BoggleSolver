@@ -17,7 +17,7 @@ void DictionaryParser::parseTextFile(std::string textFile) {
         {
 
             int score;
-            if(currentWord.length() < 2)
+            if(currentWord.length() <= 2)
             {
                 score = 0;
             }
@@ -41,7 +41,6 @@ void DictionaryParser::parseTextFile(std::string textFile) {
             {
                 score = 11;
             }
-            std::cout << currentWord << std::endl;
             validWords[currentWord] = score;
         }
     }
