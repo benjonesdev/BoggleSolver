@@ -10,7 +10,7 @@ using std::string;
 
 int main() {
     DictionaryParser d;
-    string textFile = "dictionary_scrabble.txt";
+    string textFile = "dictionary_complete.txt";
     d.parseTextFile(textFile);
     std::unordered_map<string, int> validWords;
     validWords = d.getValidWords();
