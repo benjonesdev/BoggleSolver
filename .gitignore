@@ -2,7 +2,7 @@
 build
 
 # Ignore any executables
-bin/*
+bin/*.o
 
 # Ignore Mac specific files
 .DS_Store
